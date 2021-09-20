@@ -1,9 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    let container = document.createElement("div");
-    document.body.appendChild(container);
-
     let btnSpace = document.createElement("div");
     let button = document.createElement("button");
     let btnText = document.createTextNode("Add Square");
@@ -11,8 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     button.appendChild(btnText);
     btnSpace.appendChild(button);
-    container.appendChild(btnSpace);
+    document.body.appendChild(btnSpace);
     button.style.verticalAlign = "top";
+
+    let container = document.createElement("div");
+    document.body.appendChild(container);
 
     let divCount = 0;
 
@@ -55,7 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     addDiv.nextElementSibling.remove();
                 };
             } else {
-                if ((addDiv.previousSibling == null)) {
+                if ((addDiv.previousElementSibling == null)) {
+                    alert("No square here!");
+                } else if (addDiv.previousElementSibling == button){
                     alert("No square here!");
                 } else {
                     addDiv.previousSibling.remove();
